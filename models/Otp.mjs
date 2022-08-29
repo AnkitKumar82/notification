@@ -20,12 +20,8 @@ async function generate (attrs = {}) {
   }
   await MailModel.send(sendMailRequest)
 
-  refId = persistentDataStore.set(refId, otpAttrs)
+  const response = persistentDataStore.set(refId, otpAttrs)
 
-  const response = {
-    refId,
-    retryCount: 1
-  }
   return response
 }
 
