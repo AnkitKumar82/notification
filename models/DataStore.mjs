@@ -4,7 +4,7 @@ const persistentDataStore = {}
 function set (key, value) {
   if (persistentDataStore[key]) {
     persistentDataStore[key] = [...persistentDataStore[key], value]
-    return { key, retryCount: persistentDataStore[key].length }
+    return { refId: key, retryCount: persistentDataStore[key].length }
   }
   key = nanoid(32)
   persistentDataStore[key] = [value]
