@@ -13,10 +13,10 @@ const transporter = nodemailer.createTransport({
 })
 
 async function send (attrs = {}) {
-  const { text = '', subject = '', email = '' } = attrs
+  const { text = '', subject = '', email = '', from = '' } = attrs
 
   await transporter.sendMail({
-    from: MAIL_CONFIG.APP_NAME,
+    from: `${from} ${MAIL_CONFIG.APP_NAME}`,
     to: email,
     subject,
     text

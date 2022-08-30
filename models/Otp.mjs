@@ -9,14 +9,15 @@ const OtpModel = {
 }
 
 async function generate (attrs = {}) {
-  let { refId = '', text = '', subject = '', email = '', otpLength = 6 } = attrs
+  let { refId = '', text = '', subject = '', email = '', otpLength = 6, from = '' } = attrs
 
   const otpAttrs = _buildOtpAttrs(otpLength)
 
   const sendMailRequest = {
     text: `${text} ${otpAttrs.otp}`,
     subject,
-    email
+    email,
+    from
   }
   await MailModel.send(sendMailRequest)
 
